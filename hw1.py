@@ -25,9 +25,6 @@ for month in range(12):
                 continue
             x[month * 471 + day * 24 + hour, :] = month_data[month][:,day * 24 + hour : day * 24 + hour + 9].reshape(1, -1) #vector dim:18*9 (9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9)
             y[month * 471 + day * 24 + hour, 0] = month_data[month][9, day * 24 + hour + 9] #value
-print(x)
-print(y)
-
 
 mean_x = np.mean(x, axis = 0) #18 * 9 
 std_x = np.std(x, axis = 0) #18 * 9 
@@ -41,14 +38,6 @@ x_train_set = x[: math.floor(len(x) * 0.8), :]
 y_train_set = y[: math.floor(len(y) * 0.8), :]
 x_validation = x[math.floor(len(x) * 0.8): , :]
 y_validation = y[math.floor(len(y) * 0.8): , :]
-print(x_train_set)
-print(y_train_set)
-print(x_validation)
-print(y_validation)
-print(len(x_train_set))
-print(len(y_train_set))
-print(len(x_validation))
-print(len(y_validation))
 
 dim = 18 * 9 +1
 w = np.zeros([dim, 1])
